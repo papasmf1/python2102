@@ -65,5 +65,35 @@ def connectURI(server, port):
 #호출
 print(connectURI("credu.com", "80"))
 print(connectURI(port="8080", server="test.com"))
+#가변인자(인자의 갯수가 정해지지 않은 경우)
+def union(*ar):
+    result = []
+    # HAM(0)  |  EGG(1)
+    for item in ar:
+        # H(0) | A(1) | M(1)
+        for x in item:
+            if x not in result:
+                result.append(x)
+    return result 
 
+#호출
+print( union("HAM","EGG") )
+print( union("HAM","EGG","SPAM") )
 
+#정의되지 않은 인자 
+def userURIBuilder(server, port, **user):
+    str = "http://" + server + ":" + port + "/?"
+    for key in user.keys():
+        str += key + "=" + user[key] + "&"
+    return str 
+
+#호출
+print( userURIBuilder("credu.com", "80", id="kim", passwd="1234"))
+
+#람다함수(간결함 함수 표현식)
+g = lambda x,y:x*y 
+print( g(3,4) )
+print( g(5,6) )
+print( (lambda x:x*x)(3) )
+
+print( globals() )
