@@ -25,7 +25,13 @@ print(title)
 print(link)
 
 #반복문
+#파일로 저장
+f = open("c:\\work\\webtoon.txt", "wt", encoding="utf-8")
 for tag in cartoons:
     title = tag.find("a").text 
     print(title.strip() )
-    
+    f.write(title + "\n")
+
+f.close()
+print("크롤링 종료")
+
